@@ -1,10 +1,10 @@
 # DEMP Stack: Docker + Nginx + MySQL + PHP
 
-### Start DEMP Stack
+### Start Sever
 
 `docker-compose up`
 
-### Install PHP extensions
+### Install PHP Extensions
 
 `docker exec [container id or name] docker-php-ext-install [extension] [extension]`
 
