@@ -19,7 +19,7 @@ services:
     volumes:
       - ./:/demp/
     links:
-      - "mysql"
+      - mysql
     networks:
       - demp
 
