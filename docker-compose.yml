@@ -7,7 +7,7 @@ services:
       - 8000:80
     volumes:
       - ./app:/app
-      # - ./config/nginx/site.conf:/etc/nginx/conf.d/site.conf
+      - ./config/nginx:/etc/nginx/conf.d
     depends_on:
       - php
 
@@ -15,4 +15,3 @@ services:
     image: php:fpm-alpine
     volumes:
       - ./app:/app
-      # - ./config/php/php.ini:/usr/local/etc/php/php.ini
