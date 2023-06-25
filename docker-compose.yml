@@ -1,44 +1,18 @@
-version: "3"
+version: '3.7'
 
 services:
-  nginx:
+  web:
     image: nginx:stable-alpine
     ports:
-      - "80:80"
-      - "443:443"
+      - 8000:80
     volumes:
-      - ./config/nginx/conf.d:/etc/nginx/conf.d/
-      - ./:/demp/
-    links:
+      - ./app/:/usr/share/nginx/html
+      # - ./config/nginx/site.conf:/etc/nginx/conf.d/site.conf
+    depends_on:
       - php
-    networks:
-      - demp
 
   php:
     image: php:fpm-alpine
     volumes:
-      - ./:/demp/
-    links:
-      - mysql
-    networks:
-      - demp
-
-  mysql:
-    image: mysql:5.6
-    environment:
-      - MYSQL_ROOT_PASSWORD=toor
-    networks:
-      - demp
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
-    ports:
-      - "8080:80"
-    links:
-      - "mysql:db"
-    networks:
-      - demp
-
-networks:
-  demp:
-    driver: bridge
+      - ./app/:/usr/share/nginx/html
+      # - ./config/php/php.ini:/usr/local/etc/php/php.ini
