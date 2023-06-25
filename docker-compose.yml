@@ -6,7 +6,7 @@ services:
     ports:
       - 8000:80
     volumes:
-      - ./app/:/usr/share/nginx/html
+      - ./app:/app
       # - ./config/nginx/site.conf:/etc/nginx/conf.d/site.conf
     depends_on:
       - php
@@ -14,5 +14,5 @@ services:
   php:
     image: php:fpm-alpine
     volumes:
-      - ./app/:/usr/share/nginx/html
+      - ./app:/app
       # - ./config/php/php.ini:/usr/local/etc/php/php.ini
